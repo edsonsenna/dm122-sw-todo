@@ -20,7 +20,7 @@ export default class HtmlService {
     async createTask(description) {
         let task = {description, done: false};
         const createdTaskId = await this.todoService.save(task);
-        task['id'] = createdTaskId;
+        task.id = createdTaskId;
         this.addToHtmlList(task);
     }
 
@@ -59,7 +59,10 @@ export default class HtmlService {
 
         span.textContent = task.description;
         button.textContent = 'x';
-        button.addEventListener('click', () => this.deleteTask(task.id, li));
+        button.addEventListener('click', (event) => {
+            event.stopPropagation();
+            this.deleteTask(task.id, li);
+        });
 
         if(task.done) {
             li.classList.add(DONE_CSS_CLASS);

@@ -5,12 +5,16 @@ const assetsToCache = [
   'https://fonts.gstatic.com/s/roboto/v20/KFOmCnqEu92Fr1Mu4mxKKTU1Kg.woff2',
   'https://fonts.googleapis.com/css?family=Roboto:400,700',
   'https://fonts.googleapis.com/icon?family=Material+Icons',
+  'https://unpkg.com/dexie@latest/dist/dexie.min.js',
   'assets/images/pwa-logo.png',
   'assets/js/material.min.js',
   'assets/css/style.css',
+  'assets/js/TodoService.js',
+  'assets/js/HtmlService.js',
   'assets/js/app.js',
   'favicon.ico',
   'index.html',
+  'manifest.json',
   '/'
 ];
 
@@ -64,5 +68,5 @@ async function cacheFirst(request) {
 
 self.addEventListener('fetch', event => {
   // console.log('[Service Worker] Fetch event: ' + event.request.url);
-  event.respondWith(networkFirst(event.request));
+  event.respondWith(cacheFirst(event.request));
 });
