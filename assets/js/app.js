@@ -1,6 +1,7 @@
 'use strict'
 
 import HtmlService from './HtmlService.js';
+import './TodoService.js';
 
 class App {
 
